@@ -25,7 +25,11 @@ count = 0
 for line in Lines:
     count += 1
     print("[ * ] Scanning {}...".format(count))
-    if url_ok("http://{}".format(line.strip())):
-        os.system("python3 SecretFinder.py -i http://{} -o auto-secret-finder/{}.html".format(line.strip(), line.strip()))
+    if line[:7] == "http://" or line[:8] == "https://":
+    	protocol = ""
+    else:
+    	protocol = "http://"
+    if url_ok(protocol + line.strip()):
+        os.system("python3 SecretFinder.py -i " + protocol + "{} -o auto-secret-finder/{}.html".format(line.strip(), line.strip()))
 
 # EDIT THIS LAST LINE AS YOU WANT TO FIT YOUR GOALS!
