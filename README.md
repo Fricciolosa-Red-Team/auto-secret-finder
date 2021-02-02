@@ -6,10 +6,9 @@ Basically it runs Secret-Finder on multiple urls, edit the last line of
 
 ### Installation
 
-```
-$ git clone https://github.com/Fricciolosa-Red-Team/auto-secret-finder.git autosecretfinder
-$ cd autosecretfinder
-$ python -m pip install -r requirements.txt or pip install -r requirements.txt
-$ python3 auto-secret-finder.py subs.txt
-```
+1. `git clone https://github.com/Fricciolosa-Red-Team/auto-secret-finder.git autosecretfinder`
+2. `cd autosecretfinder`
+3. `python -m pip install -r requirements.txt` or `pip install -r requirements.txt`
+4. `python3 auto-secret-finder.py subs.txt`
+
 where subs.txt is a list of domains.
