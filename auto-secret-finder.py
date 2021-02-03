@@ -22,8 +22,12 @@ count = 0
 # Strips the newline character
 for line in Lines:
     count += 1
-    print("[ * ] Scanning {}...".format(count))
+    if line[:7] == "http://" or line[:8] == "https://":
+        protocol = ""
+    else:
+        protocol = "http://"
+    print("[ * ] Scanning "+ str(count) + " : " + protocol + "{}...".format(line[:-1]))
     if url_ok("http://{}".format(line.strip())):
-        os.system("python3 SecretFinder.py -i http://{} -o auto-secret-finder/{}.html".format(line.strip(), line.strip()))
+        os.system("python3 SecretFinder.py -i " + protocol + "{} -o auto-secret-finder/{}.html".format(line.strip(), line.strip()))
 
 # EDIT THIS LAST LINE AS YOU WANT TO FIT YOUR GOALS!

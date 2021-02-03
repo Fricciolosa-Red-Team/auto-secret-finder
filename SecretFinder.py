@@ -379,8 +379,7 @@ def send_request(url):
             proxies = proxies,
             timeout = 10
         )
-        if resp:
-        	return resp.content.decode('utf-8','replace')
+        return resp.content.decode('utf-8','replace')
     except Exception as err:
         print(err)
 
