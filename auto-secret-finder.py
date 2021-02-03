@@ -7,9 +7,7 @@ Lines = file1.readlines()
 def url_ok(url):
     try:
         r = requests.get(url,timeout=5)
-        if r:
-            return True
-        return False
+        return r != None
     except Exception as e:
         return False
 
@@ -25,11 +23,7 @@ count = 0
 for line in Lines:
     count += 1
     print("[ * ] Scanning {}...".format(count))
-    if line[:7] == "http://" or line[:8] == "https://":
-    	protocol = ""
-    else:
-    	protocol = "http://"
-    if url_ok(protocol + line.strip()):
-        os.system("python3 SecretFinder.py -i " + protocol + "{} -o auto-secret-finder/{}.html".format(line.strip(), line.strip()))
+    if url_ok("http://{}".format(line.strip())):
+        os.system("python3 SecretFinder.py -i http://{} -o auto-secret-finder/{}.html".format(line.strip(), line.strip()))
 
 # EDIT THIS LAST LINE AS YOU WANT TO FIT YOUR GOALS!
