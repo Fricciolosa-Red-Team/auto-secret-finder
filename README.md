@@ -13,4 +13,8 @@ Basically it runs Secret-Finder on multiple urls, edit the last line of
 ### Usage 
 `python3 auto-secret-finder.py subs.txt` (where subs.txt is a list of domains).
 
+or 
+
+`./for.sh subs.txt`
+
 Remember to edit as you want the last line of [auto-secret-finder](https://github.com/Fricciolosa-Red-Team/auto-secret-finder/blob/main/auto-secret-finder.py#L31) to customize the command.
