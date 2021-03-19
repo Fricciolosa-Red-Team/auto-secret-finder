@@ -2,8 +2,7 @@
 # SecretFinder - Tool for discover apikeys/accesstokens and sensitive data in js file
 # based to LinkFinder - github.com/GerbenJavado
 # By m4ll0k (@m4ll0k2) github.com/m4ll0k
-#
-# Edited by edoardottt (Fricciolosa Red Team)
+
 
 import os,sys
 if not sys.version_info.major >= 3:
@@ -171,7 +170,7 @@ def getContext(matches,content,name,rex='.+?'):
 def parser_file(content,mode=1,more_regex=None,no_dup=1):
     ''' parser file '''
     if mode == 1:
-        if not len and len(content) > 1000000:
+        if len(content) > 1000000:
             content = content.replace(";",";\r\n").replace(",",",\r\n")
         else:
             content = jsbeautifier.beautify(content)
@@ -376,12 +375,12 @@ def send_request(url):
             url = url,
             verify = False,
             headers = headers, 
-            proxies = proxies,
-            timeout = 10
+            proxies = proxies
         )
         return resp.content.decode('utf-8','replace')
     except Exception as err:
         print(err)
+        sys.exit(0)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -435,31 +434,31 @@ if __name__ == "__main__":
         
         matched = parser_file(file,mode)
         if args.output == 'cli':
-           	cli_output(matched)
+            cli_output(matched)
         else:
-	        output += '<h1>File: <a href="%s" target="_blank" rel="nofollow noopener noreferrer">%s</a></h1>'%(escape(url),escape(url))
-	        for match in matched:
-	            _matched = match.get('matched')
-	            _named = match.get('name')
-	            header = '<div class="text">%s'%(_named.replace('_',' '))
-	            body = ''
-	            # find same thing in multiple context
-	            if match.get('multi_context'):
-	                # remove duplicate
-	                no_dup = []
-	                for context in match.get('context'):
-	                    if context not in no_dup:
-	                        body += '</a><div class="container">%s</div></div>'%(context)
-	                        body = body.replace(
-	                            context,'<span style="background-color:yellow">%s</span>'%context)
-	                        no_dup.append(context)
-	                    # --
-	            else:
-	                body += '</a><div class="container">%s</div></div>'%(match.get('context')[0] if len(match.get('context'))>1 else match.get('context'))
-	                body = body.replace(
-	                    match.get('context')[0],
-	                    '<span style="background-color:yellow">%s</span>'%(match.get('context') if len(match.get('context'))>1 else match.get('context'))
-	                )
-	            output += header + body 
+            output += '<h1>File: <a href="%s" target="_blank" rel="nofollow noopener noreferrer">%s</a></h1>'%(escape(url),escape(url))
+            for match in matched:
+                _matched = match.get('matched')
+                _named = match.get('name')
+                header = '<div class="text">%s'%(_named.replace('_',' '))
+                body = ''
+                # find same thing in multiple context
+                if match.get('multi_context'):
+                    # remove duplicate
+                    no_dup = []
+                    for context in match.get('context'):
+                        if context not in no_dup:
+                            body += '</a><div class="container">%s</div></div>'%(context)
+                            body = body.replace(
+                                context,'<span style="background-color:yellow">%s</span>'%context)
+                            no_dup.append(context)
+                        # --
+                else:
+                    body += '</a><div class="container">%s</div></div>'%(match.get('context')[0] if len(match.get('context'))>1 else match.get('context'))
+                    body = body.replace(
+                        match.get('context')[0] if len(match.get('context')) > 0 else ''.join(match.get('context')),
+                        '<span style="background-color:yellow">%s</span>'%(match.get('context') if len(match.get('context'))>1 else match.get('context'))
+                    )
+                output += header + body 
     if args.output != 'cli':
         html_save(output)
