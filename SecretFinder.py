@@ -2,9 +2,11 @@
 # SecretFinder - Tool for discover apikeys/accesstokens and sensitive data in js file
 # based to LinkFinder - github.com/GerbenJavado
 # By m4ll0k (@m4ll0k2) github.com/m4ll0k
+# edited by Fricciolosa Red Team
 
 
-import os, sys
+import os
+import sys
 import re
 import glob
 import argparse
@@ -135,7 +137,7 @@ _template = """
 </head>
 <body contenteditable="true">
   $$content$$
-  
+
   <a class='button' contenteditable='false' href='https://github.com/Fricciolosa-Red-Team/auto-secret-finder/issues/new' \
 rel='nofollow noopener noreferrer' target='_blank'><span class='github-icon'><svg height="24" viewbox="0 \
 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
