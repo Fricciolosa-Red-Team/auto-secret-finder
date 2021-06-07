@@ -18,3 +18,7 @@ or
 `./for.sh subs.txt`
 
 Remember to edit as you want the last line of [auto-secret-finder](https://github.com/Fricciolosa-Red-Team/auto-secret-finder/blob/main/auto-secret-finder.py#L31) to customize the command.
+
+### License
+
+This repository is under [GNU General Public License v3.0](https://github.com/Fricciolosa-Red-Team/auto-secret-finder/blob/main/LICENSE)
