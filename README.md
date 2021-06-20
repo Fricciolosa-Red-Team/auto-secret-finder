@@ -11,11 +11,11 @@ Basically it runs Secret-Finder on multiple urls, edit the last line of
 3. `python -m pip install -r requirements.txt` or `pip install -r requirements.txt`
 
 ### Usage 
-`python3 auto-secret-finder.py subs.txt` (where subs.txt is a list of domains).
+- `./for.sh subs.txt` (where subs.txt is a list of domains)
 
-or 
+  or 
 
-`./for.sh subs.txt`
+- `python3 auto-secret-finder.py subs.txt`
 
 Remember to edit as you want the last line of [auto-secret-finder](https://github.com/Fricciolosa-Red-Team/auto-secret-finder/blob/main/auto-secret-finder.py#L31) to customize the command.
 
