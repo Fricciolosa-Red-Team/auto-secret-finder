@@ -17,7 +17,7 @@ Basically it runs Secret-Finder on multiple urls, edit the last line of
 
 - `python3 auto-secret-finder.py subs.txt`
 
-Remember to edit as you want [this command](https://github.com/Fricciolosa-Red-Team/auto-secret-finder/blob/main/auto-secret-finder.py#L33) to customize the command.
+Remember to edit as you want [this command](https://github.com/Fricciolosa-Red-Team/auto-secret-finder/blob/main/auto-secret-finder.py#L33-L37) to customize the command.
 
 ## License 📜
 
